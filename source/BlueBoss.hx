@@ -16,8 +16,9 @@ class BlueBoss extends Enemy
 	{
 		super(X, Y, SimpleGraphic);
 		loadGraphic(AssetPaths.sharkman__png, true, 159, 224);
-		//setSize(141, 220);
-		//offset.set(9, 4);
+		scale.x /= 2;
+		scale.y /= 2;
+		updateHitbox();
 		health = 4;
 		t = new FlxTimer();
 		t.start(2,idle);

@@ -30,7 +30,7 @@ class Player extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y);
-		
+		health = 5;
 		loadGraphic(AssetPaths.main__png, true, 64, 64);
 		setSize(28, 56);
 		offset.set(20, 8);
@@ -94,9 +94,8 @@ class Player extends FlxSprite
 			{
 				if(!invulnerable)
 				{
-					health--;
+					hurt(1);
 					invulnerable = true;
-					trace('ouch');
 					var t = new Timer(2000);
 					var visTimer = new Timer(100);
 					visTimer.run = function() {
@@ -116,5 +115,11 @@ class Player extends FlxSprite
 		}
 		
 		super.update(elapsed);	
+	}
+	
+	override public function kill():Void 
+	{
+		super.kill();
+		FlxG.resetState();
 	}
 }
