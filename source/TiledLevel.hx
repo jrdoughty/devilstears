@@ -208,6 +208,9 @@ class TiledLevel extends TiledMap
 				state.player = player;
 				group.add(player);
 			case "enemy":
+				var enemy = new GroundPatrol(x, y);
+				group.add(enemy);
+			case "enemy_m":
 				var enemy = new MotionGroundPatrol(x, y);
 				group.add(enemy);
 			case "walker":
@@ -217,8 +220,15 @@ class TiledLevel extends TiledMap
 				var enemy = new Walker(x, y,1,3);
 				group.add(enemy);
 			case "enemy_bat":
+				var enemy = new Bat(x, y);
+				group.add(enemy);
+			case "enemy_bat_m":
 				var enemy = new MotionBat(x, y);
 				group.add(enemy);
+			case "enemy_shark":
+				var enemy = new BlueBoss(x, y);
+				group.add(enemy);
+				trace('test');
 				
 			case "floor":
 				var floor = new FlxObject(x, y, o.width, o.height);

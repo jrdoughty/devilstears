@@ -15,6 +15,7 @@ class Bat extends Enemy
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
+		loadGraphic(AssetPaths.bat__png, true, 32, 32);
 		acceleration.y = 0;
 		t = new FlxTimer();
 		t.start(1,right);

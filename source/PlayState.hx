@@ -60,6 +60,8 @@ class PlayState extends FlxState
 		status.alignment = RIGHT;
 		status.text = youDied ? "Aww, you died!" : "Collect coins.";
 		add(status);
+		
+		FlxG.sound.playMusic(AssetPaths.main__wav);
 	}
 	
 	override public function update(elapsed:Float):Void 

@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
+import flixel.FlxG;
 
 /**
  * ...
@@ -16,6 +17,19 @@ class Enemy extends FlxSprite
 		makeGraphic(32, 32, 0xffaa1111);
 		acceleration.y = 400;
 		enemies.push(this);
+	}
+	
+	override public function hurt(Damage:Float):Void 
+	{
+		super.hurt(Damage);
+		if (!alive)
+		{
+			FlxG.sound.play(AssetPaths.explode__wav);
+		}
+		else
+		{
+			FlxG.sound.play(AssetPaths.hit__wav);
+		}
 	}
 	
 }

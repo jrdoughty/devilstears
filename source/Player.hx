@@ -25,14 +25,15 @@ class Player extends FlxSprite
 	private var jumpable = true;
 	private var jumptimerstarted = false;
 	private var jumpTimer:FlxTimer = new FlxTimer();
+	private var readyToAttack:Bool = true;
 
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y);
 		
-		loadGraphic(AssetPaths.knight__png, true, 32, 32);
-		width = 32;
-		height = 32;
+		loadGraphic(AssetPaths.main__png, true, 64, 64);
+		setSize(28, 56);
+		offset.set(20, 8);
 		maxVelocity.x = 200;
 		maxVelocity.y = 600;
 		acceleration.y = 400;
@@ -77,16 +78,15 @@ class Player extends FlxSprite
 		}
 		if (FlxG.keys.anyPressed([SPACE]))
 		{
-			var oAttack:FlxObject = !flipX?new FlxObject(x + 32, y, 16, 32):new FlxObject(x - 16, y, 16, 32);
-			/*var oAttack:FlxSprite = !flipX?new FlxSprite(x + 32, y):new FlxSprite(x-16, y);
-			oAttack.makeGraphic(16, 32);
-			FlxG.state.add(oAttack);*/
-			for(i in Enemy.enemies)
-			if (FlxG.overlap(oAttack, i))
+			if (readyToAttack)
 			{
-				i.hurt(1);
+				var oAttack:Attack = new Attack();
+				FlxG.sound.play(AssetPaths.attack__wav);
+				readyToAttack = false;
+				var coolDown = new FlxTimer();
+				coolDown.start(1, function(time:FlxTimer){readyToAttack = true; });
 			}
-			oAttack = null;
+			
 		}
 		for (i in Enemy.enemies)
 		{
