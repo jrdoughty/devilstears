@@ -12,6 +12,8 @@ class Walker extends Enemy
 {
 	var accel:Int;
 	var t:FlxTimer;
+	var state = 'idle';
+	var lastX:Float = 0;
 	public function new(?X:Float=0, ?Y:Float=0, health:Int = 1, speed:Int = 1, jump:Int = 0, attack:Int = 0) 
 	{
 		super(X, Y);
@@ -36,7 +38,19 @@ class Walker extends Enemy
 		else
 		{
 			this.acceleration.x = accel;
+			state = 'attack';
 		}
+	}
+	
+	override public function update(elapsed:Float):Void 
+	{
+		super.update(elapsed);
+		if (state == 'attack' && lastX == x)
+		{
+			acceleration.x *= -1;
+			flipX = !flipX;
+		}
+		lastX = x;
 	}
 }
 /*

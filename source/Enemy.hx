@@ -25,6 +25,7 @@ class Enemy extends FlxSprite
 		if (!alive)
 		{
 			FlxG.sound.play(AssetPaths.explode__wav);
+			enemies.remove(this);
 		}
 		else
 		{

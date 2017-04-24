@@ -12,7 +12,7 @@ import flixel.util.FlxColor;
  * A FlxState which can be used for the game's menu.
  */
 
-class CreditsState extends FlxState
+class HelpState extends FlxState
 {
 	var subHead:FlxText;
 	var head:FlxText;
@@ -39,13 +39,13 @@ class CreditsState extends FlxState
 		head.setBorderStyle(OUTLINE, FlxColor.BROWN, 1);
 		add(head);
 		
-		var credit1 = new FlxText(0, 35+60, 320,'Executive Producer Tiffany Doughty');
+		var credit1 = new FlxText(0, 35+60, 320,'A and D along with Left and Right move the character left and right');
 		add(credit1);
-		var credit2 = new FlxText(0, 55+60, 320,'Code, Music, Main Char John Doughty');
+		var credit2 = new FlxText(0, 55+60, 320,'W and Up are Jump');
 		add(credit2);
-		var credit3 = new FlxText(0, 75+60, 320,'Bosses and Background Reid Slaughter');
+		var credit3 = new FlxText(0, 75+60, 320,'SPACE launches sonic mayhem!');
 		add(credit3);
-		var credit4 = new FlxText(0, 95+60, 320,'Special Thanks: Danny, Matt, Nick, Kyle, Alexis, Tim, Andy');
+		var credit4 = new FlxText(0, 95+60, 320,'');
 		add(credit4);
 
 		var playBtn = new Button(170, 200, 120, 30, AssetPaths.button__png, "PLAY", play, 18);

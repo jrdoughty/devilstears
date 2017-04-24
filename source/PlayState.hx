@@ -17,6 +17,7 @@ class PlayState extends FlxState
 	public var player:Player;
 	public var floor:FlxObject;
 	public var exit:FlxSprite;
+	public var lastEnCount:Int;
 	
 	private static var youDied:Bool = false;
 	
@@ -50,7 +51,8 @@ class PlayState extends FlxState
 		score.scrollFactor.set(0, 0); 
 		score.borderColor = 0xff000000;
 		score.borderStyle = SHADOW;
-		score.text = "SCORE: " + (coins.countDead() * 100);
+		score.text = "Enemies: " + (Enemy.enemies.length);
+		lastEnCount = Enemy.enemies.length;
 		add(score);
 		
 		status = new FlxText(FlxG.width - 160 - 2, 2, 160);
@@ -58,7 +60,7 @@ class PlayState extends FlxState
 		status.borderColor = 0xff000000;
 		score.borderStyle = SHADOW;
 		status.alignment = RIGHT;
-		status.text = youDied ? "Aww, you died!" : "Collect coins.";
+		//status.text = youDied ? "Aww, you died!" : "Collect coins.";
 		add(status);
 		
 		FlxG.sound.playMusic(AssetPaths.main__wav);
@@ -84,13 +86,21 @@ class PlayState extends FlxState
 			youDied = true;
 			FlxG.resetState();
 		}
+		if (Enemy.enemies.length == 0 && status.text != "Yay, you won!")
+		{
+			win();
+		}
+		else if (Enemy.enemies.length != lastEnCount && score.text != "All Enemies have fallen!")
+		{
+			lastEnCount = Enemy.enemies.length;
+			score.text = "Enemies: " + (Enemy.enemies.length);
+		}
 	}
 	
-	public function win(Exit:FlxObject, Player:FlxObject):Void
+	public function win(Exit:FlxObject = null, player:FlxObject = null):Void
 	{
 		status.text = "Yay, you won!";
-		score.text = "SCORE: 5000";
-		player.kill();
+		score.text = "All Enemies have fallen!";
 	}
 	
 	public function getCoin(Coin:FlxObject, Player:FlxObject):Void

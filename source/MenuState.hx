@@ -36,12 +36,13 @@ class MenuState extends FlxState
 		subHead = new FlxText(0, 0, 320);
 		subHead.text = "Devils little";
 		subHead.setFormat(AssetPaths.Our_Arcade_Games__ttf, 20, FlxColor.WHITE, "center");
-		//subHead.setBorderStyle(FlxText.BORDER_OUTLINE, FlxColor.BROWN, 1);
+		subHead.setBorderStyle(OUTLINE, FlxColor.BROWN, 1);
 		add(subHead);
 
 		head = new FlxText(0, 35, 320);
 		head.text = "SHOW";
 		head.setFormat(AssetPaths.Our_Arcade_Games__ttf, 40, FlxColor.WHITE, "center");
+		head.setBorderStyle(OUTLINE, FlxColor.BROWN, 1);
 		add(head);
 
 		playBtn = new Button(100, 100, 120, 30, AssetPaths.button__png, "PLAY", play, 18);
@@ -73,7 +74,7 @@ class MenuState extends FlxState
 
 	public function help(sprite:FlxSprite = null)
 	{
-		//FlxG.switchState(new HelpState());
+		FlxG.switchState(new HelpState());
 	}
 
 	public function credits(sprite:FlxSprite = null)
