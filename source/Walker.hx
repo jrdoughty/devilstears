@@ -51,6 +51,10 @@ class Walker extends Enemy
 			flipX = !flipX;
 		}
 		lastX = x;
+		if (y > 800)
+		{
+			hurt(health);
+		}
 	}
 }
 /*

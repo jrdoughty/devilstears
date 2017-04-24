@@ -59,7 +59,7 @@ class Button extends FlxGroup
 
 		text.text = textString;
 
-		text.setFormat("assets/fonts/Our-Arcade-Games.ttf", fontSize == null?Std.int(height - height/4):fontSize, FlxColor.WHITE, "center");
+		text.setFormat("assets/fonts/Our-Arcade-Games.ttf", fontSize == null?Std.int(height - height/3):fontSize-2, FlxColor.WHITE, "center");
 
 		//text.setBorderStyle(FlxText.BORDER_OUTLINE, FlxColor.BROWN, 1);
 

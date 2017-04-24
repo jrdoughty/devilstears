@@ -32,18 +32,21 @@ class MenuState extends FlxState
 
 		girl = new ShowWoman(0, 120);
 		add(girl);
-
-		subHead = new FlxText(0, 0, 320);
-		subHead.text = "Devils little";
-		subHead.setFormat(AssetPaths.Our_Arcade_Games__ttf, 20, FlxColor.WHITE, "center");
-		subHead.setBorderStyle(OUTLINE, FlxColor.BROWN, 1);
-		add(subHead);
-
 		head = new FlxText(0, 35, 320);
-		head.text = "SHOW";
-		head.setFormat(AssetPaths.Our_Arcade_Games__ttf, 40, FlxColor.WHITE, "center");
+		head.text = "WELCOME TO THE SHOW";
+		head.setFormat(AssetPaths.Our_Arcade_Games__ttf, 20, FlxColor.WHITE, "center");
 		head.setBorderStyle(OUTLINE, FlxColor.BROWN, 1);
 		add(head);
+		subHead = new FlxText(220, 100, 100);
+		subHead.text = "Take that guitar and save our show!                                                                          .";
+		subHead.setFormat(AssetPaths.Our_Arcade_Games__ttf, 8, FlxColor.WHITE, "center");
+		add(subHead);
+		var guy = new FlxSprite(280, 120, AssetPaths.guitarman__png);
+		guy.flipX = true;
+		guy.scale.x /= 2;
+		guy.scale.y /= 2;
+		guy.updateHitbox();
+		add(guy);
 
 		playBtn = new Button(100, 100, 120, 30, AssetPaths.button__png, "PLAY", play, 18);
 		add(playBtn);

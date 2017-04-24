@@ -27,15 +27,10 @@ class CreditsState extends FlxState
 		add(new FlxSprite(0, 0, AssetPaths.menubackground__png));
 
 
-		subHead = new FlxText(0, 0, 320);
-		subHead.text = "Devils little";
-		subHead.setFormat(AssetPaths.Our_Arcade_Games__ttf, 20, FlxColor.WHITE, "center");
-		subHead.setBorderStyle(OUTLINE, FlxColor.BROWN, 1);
-		add(subHead);
-
+		
 		head = new FlxText(0, 35, 320);
-		head.text = "SHOW";
-		head.setFormat(AssetPaths.Our_Arcade_Games__ttf, 40, FlxColor.WHITE, "center");
+		head.text = "WELCOME TO THE SHOW";
+		head.setFormat(AssetPaths.Our_Arcade_Games__ttf, 20, FlxColor.WHITE, "center");
 		head.setBorderStyle(OUTLINE, FlxColor.BROWN, 1);
 		add(head);
 		
